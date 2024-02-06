@@ -6,6 +6,10 @@
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.3.3"
   },
+
+  "scripts": {
+    "dev": "tsnd --exit-child --transpile-only src/main.ts"
+  },
   "dependencies": {
     "@fastify/cookie": "^9.3.1",
     "@fastify/cors": "^9.0.1",
