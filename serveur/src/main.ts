@@ -14,7 +14,7 @@ async function main (){
          console.error(e);
          
           
-         // process.exit(0);
+          process.exit(0);
          
     }
 }
