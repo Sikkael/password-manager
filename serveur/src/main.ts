@@ -1,6 +1,7 @@
 import createServer from "./utils/createServer";
+import logger from "./utils/logger";
 
-console.log("Bonjour la planète !");
+
 
 async function main (){
 
@@ -9,12 +10,16 @@ async function main (){
     try {
         
          const url = await app.listen(4000,"0.0.0.0");
+
+         logger.info(`Server is ready at ${url}`);
     }
     catch(e){
-         console.error(e);
+         
+         logger.error(e);
+         process.exit(1);
          
           
-          process.exit(0);
+         
          
     }
 }
