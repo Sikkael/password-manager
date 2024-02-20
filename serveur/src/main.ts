@@ -33,6 +33,7 @@ async function main (){
          logger.info(`Server is ready at ${url}`);
 
          await connectToDb();
+        
     }
     catch(e){
          
