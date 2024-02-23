@@ -5,6 +5,8 @@ import cors from "@fastify/cors";
 import cookie from "@fastify/cookie";
 import { CORS_ORIGIN } from "../constants";
 import jwt from "@fastify/jwt";
+import userRoutes from "../modules/user/user.route";
+import vaultRoutes from "../modules/vault/vault.route";
 
 function createServer (){
 
@@ -55,6 +57,9 @@ function createServer (){
               }
          }
         );
+
+        app.register(userRoutes, {prefix:"api/user"});
+        app.register(vaultRoutes, {prefix: "api/vault"});
 
     return app;
 
