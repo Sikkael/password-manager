@@ -1,7 +1,8 @@
-import fastify from "fastify";
+import fastify, { FastifyReply, FastifyRequest } from "fastify";
 import fs from "fs";
 import path from "path";
-import cors from "@fastify/cors"
+import cors from "@fastify/cors";
+import cookie from "@fastify/cookie";
 import { CORS_ORIGIN } from "../constants";
 import jwt from "@fastify/jwt";
 
@@ -29,6 +30,31 @@ function createServer (){
           signed: false,
         },
       });
+      
+      app.register(cookie, {
+        parseOptions: {},
+      });
+      
+
+      app.decorate(
+        "authenticate",  
+         async (request: FastifyRequest, reply: FastifyReply) => {
+              try {
+                   
+                   const user = await request.jwtVerify<{
+                       _id: string; 
+                   }>();
+
+                   request.user = user;
+                   
+              }
+              catch(e){
+
+                   return reply.send(e);
+                  
+              }
+         }
+        );
 
     return app;
 
