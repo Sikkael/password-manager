@@ -1,5 +1,5 @@
 Client
-yarn create next-app --typescript client
+yarn create next-app@12.1.6 --typescript client
 
 yarn add @chakra-ui/react@1.8.8 @emotion/react@^11 @emotion/styled@^11 framer-motion@^6 crypto-js@^4.1.1 react-query@^3.39.0 axios@^0.27.2 react-hook-form@^7.31.1
 
