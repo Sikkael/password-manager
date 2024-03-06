@@ -11,7 +11,7 @@ import Vault from "@/components/Vault";
 
 const  Home:NextPage = () => {
 
-  const [step, setStep] = useState<'login' | 'register' | 'vault'>('login');
+  const [step, setStep] = useState<'login' | 'register' | 'vault'>('register');
 
   return (
     <>
