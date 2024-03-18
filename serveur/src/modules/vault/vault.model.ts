@@ -1,4 +1,4 @@
-import { Ref, prop } from "@typegoose/typegoose";
+import { Ref, getModelForClass, prop } from "@typegoose/typegoose";
 import { User } from "../user/user.model";
 
 export class Vault {
@@ -8,4 +8,14 @@ export class Vault {
 
     @prop({default: ""})
     data: string;
+
+    @prop({require: true})
+    salt: string;
 }
+
+
+export const VaultModel = getModelForClass(Vault, {
+    schemaOptions: {
+      timestamps: true,
+    },
+  });
