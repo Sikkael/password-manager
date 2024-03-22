@@ -1,6 +1,13 @@
+import { Heading } from "@chakra-ui/react";
+import FormWrapper from "./FormWrapper";
+
 function RegisterForm(){
      
-    return <div>Register</div>
+    return <FormWrapper>
+          <Heading>
+            Register
+          </Heading>
+       </FormWrapper>;
 
 }
 
