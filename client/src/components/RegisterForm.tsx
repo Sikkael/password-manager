@@ -22,7 +22,7 @@ function RegisterForm(){
              <Heading>Register</Heading>
              <FormControl mt="4">
                 <FormLabel htmlFor="email">Email</FormLabel> 
-                <input id="email" placeholder="Email"
+                <Input id="email" placeholder="Email"
                   {...register("email", {
                     required: "Email is required",
                     minLength: { value: 4, message: "Email must be 4 characters long" },
