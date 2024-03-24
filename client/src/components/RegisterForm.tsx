@@ -1,4 +1,4 @@
-import { FormControl, FormErrorMessage, FormLabel, Heading } from "@chakra-ui/react";
+import { Button, FormControl, FormErrorMessage, FormLabel, Heading, Input } from "@chakra-ui/react";
 import FormWrapper from "./FormWrapper";
 import { useForm } from "react-hook-form";
 
@@ -28,14 +28,34 @@ function RegisterForm(){
                     minLength: { value: 4, message: "Email must be 4 characters long" },
                   })}
                 />
-        
+              
                 <FormErrorMessage>
                   {errors.email && errors.email.message}
-                </FormErrorMessage>
-                
-               
+                </FormErrorMessage>  
              </FormControl>
-           </FormWrapper>;
+
+              <FormControl mt="4">
+        <FormLabel htmlFor="password">Password</FormLabel>
+        <Input
+          id="password"
+          placeholder="Password"
+          type="password"
+          {...register("password", {
+            required: "Password is required",
+            minLength: {
+              value: 6,
+              message: "Password must be 6 characters long",
+            },
+          })}
+        />
+
+        <FormErrorMessage>
+          {errors.email && errors.email.message}
+        </FormErrorMessage>
+      </FormControl>
+
+         <Button type="submit">Register</Button>
+      </FormWrapper>;
 
 }
 
