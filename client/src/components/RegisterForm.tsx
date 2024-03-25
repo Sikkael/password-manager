@@ -1,11 +1,13 @@
 import { Button, FormControl, FormErrorMessage, FormLabel, Heading, Input } from "@chakra-ui/react";
 import FormWrapper from "./FormWrapper";
 import { useForm } from "react-hook-form";
-import { hashPassword } from "@/crypto";
+import { generateVaultKey, hashPassword } from "../crypto";
+import { VaultItem } from "../pages";
 import { useMutation } from "react-query";
 import { registerUser } from "@/api";
 
-function RegisterForm(){
+function RegisterForm(
+  ){
 
   const {
     handleSubmit,
@@ -16,7 +18,23 @@ function RegisterForm(){
   } = useForm<{ email: string; password: string; hashedPassword: string }>();
      
     const mutation = useMutation(registerUser, {
-          
+          onSuccess: ({ salt, vault }) => {
+            const hashedPassword = getValues("hashedPassword");
+      
+            const email = getValues("email");
+      
+            const vaultKey = generateVaultKey({
+              hashedPassword,
+              email,
+              salt,
+            });
+
+            window.sessionStorage.setItem("vk", vaultKey);
+
+            window.sessionStorage.setItem("vault", "");
+    
+         },
+
     });
 
     return <FormWrapper
@@ -28,6 +46,7 @@ function RegisterForm(){
       
               setValue("hashedPassword", hashedPassword);
 
+             
        })}
     >
              <Heading>Register</Heading>
@@ -65,7 +84,7 @@ function RegisterForm(){
         </FormErrorMessage>
       </FormControl>
 
-         <Button type="submit">Register</Button>
+         <Button type="submit" mt="4">Register</Button>
       </FormWrapper>;
 
 }
