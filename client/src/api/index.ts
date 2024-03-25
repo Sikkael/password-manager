@@ -6,5 +6,7 @@ export function registerUser(payload: {
        hasshedPassword: string,
        email: string 
 }){
-       return axios.post(userBase);
+       return axios.post<{ salt: string; vault: string }>(userBase, payload, { 
+          withCredentials:true 
+       }).then((res) => res.data);
 }

@@ -15,7 +15,9 @@ function RegisterForm(){
     formState: { errors, isSubmitting },
   } = useForm<{ email: string; password: string; hashedPassword: string }>();
      
-    const mutation = useMutation(registerUser);
+    const mutation = useMutation(registerUser, {
+          
+    });
 
     return <FormWrapper
             onSubmit={handleSubmit(() => {
