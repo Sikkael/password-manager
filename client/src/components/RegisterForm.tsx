@@ -1,6 +1,7 @@
 import { Button, FormControl, FormErrorMessage, FormLabel, Heading, Input } from "@chakra-ui/react";
 import FormWrapper from "./FormWrapper";
 import { useForm } from "react-hook-form";
+import { hashPassword } from "@/crypto";
 
 function RegisterForm(){
 
@@ -14,8 +15,12 @@ function RegisterForm(){
      
     return <FormWrapper
             onSubmit={handleSubmit(() => {
-            const password = getValues("password");
-            const email = getValues("email");
+              const password = getValues("password");
+              const email = getValues("email");
+      
+              const hashedPassword = hashPassword(password);
+      
+              setValue("hashedPassword", hashedPassword);
 
        })}
     >
