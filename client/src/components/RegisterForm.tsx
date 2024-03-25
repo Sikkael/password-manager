@@ -2,6 +2,8 @@ import { Button, FormControl, FormErrorMessage, FormLabel, Heading, Input } from
 import FormWrapper from "./FormWrapper";
 import { useForm } from "react-hook-form";
 import { hashPassword } from "@/crypto";
+import { useMutation } from "react-query";
+import { registerUser } from "@/api";
 
 function RegisterForm(){
 
@@ -13,6 +15,8 @@ function RegisterForm(){
     formState: { errors, isSubmitting },
   } = useForm<{ email: string; password: string; hashedPassword: string }>();
      
+    const mutation = useMutation(registerUser);
+
     return <FormWrapper
             onSubmit={handleSubmit(() => {
               const password = getValues("password");
