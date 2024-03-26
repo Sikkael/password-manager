@@ -32,10 +32,15 @@ function RegisterForm({setVaultKey,setStep}:{
               email,
               salt,
             });
-
+           
             window.sessionStorage.setItem("vk", vaultKey);
+            
+            setVaultKey(vaultKey);
 
             window.sessionStorage.setItem("vault", "");
+
+            setStep("vault");
+
     
          },
 
