@@ -55,6 +55,11 @@ function RegisterForm({setVaultKey,setStep}:{
       
               setValue("hashedPassword", hashedPassword);
 
+              mutation.mutate({
+                email,
+                hashedPassword,
+                
+              });
              
        })}
     >
