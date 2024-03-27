@@ -1,16 +1,12 @@
 import { Button, FormControl, FormErrorMessage, FormLabel, Heading, Input } from "@chakra-ui/react";
 import FormWrapper from "./FormWrapper";
 import { useForm } from "react-hook-form";
-import { generateVaultKey, hashPassword } from "../crypto";
-import { VaultItem } from "../pages";
+import { hashPassword } from "@/crypto";
 import { useMutation } from "react-query";
 import { registerUser } from "@/api";
 import { Dispatch, SetStateAction } from "react";
 
-function RegisterForm({setVaultKey,setStep}:{
-  setVaultKey: Dispatch<SetStateAction<string>>;
-  setStep: Dispatch<SetStateAction<"login" | "register" | "vault">>;
-}
+function RegisterForm(
   ){
 
   const {
@@ -32,50 +28,41 @@ function RegisterForm({setVaultKey,setStep}:{
               email,
               salt,
             });
-           
+
             window.sessionStorage.setItem("vk", vaultKey);
-            
-            setVaultKey(vaultKey);
 
             window.sessionStorage.setItem("vault", "");
-
-            setStep("vault");
-
     
          },
 
     });
 
-    return (<FormWrapper
-      onSubmit={handleSubmit(() => {
-        const password = getValues("password");
-        const email = getValues("email");
+    return <FormWrapper
+            onSubmit={handleSubmit(() => {
+              const password = getValues("password");
+              const email = getValues("email");
+      
+              const hashedPassword = hashPassword(password);
+      
+              setValue("hashedPassword", hashedPassword);
 
-        const hashedPassword = hashPassword(password);
-
-        setValue("hashedPassword", hashedPassword);
-
-        mutation.mutate({
-          email,
-          hashedPassword,
-          
-        });
-       
- })}>
-       <Heading>Register</Heading>
-       <FormControl mt="4">
-          <FormLabel htmlFor="email">Email</FormLabel> 
-          <Input id="email" placeholder="Email"
-            {...register("email", {
-              required: "Email is required",
-              minLength: { value: 4, message: "Email must be 4 characters long" },
-            })}
-          />
-        
-          <FormErrorMessage>
-            {errors.email && errors.email.message}
-          </FormErrorMessage>  
-       </FormControl>
+             
+       })}
+    >
+             <Heading>Register</Heading>
+             <FormControl mt="4">
+                <FormLabel htmlFor="email">Email</FormLabel> 
+                <Input id="email" placeholder="Email"
+                  {...register("email", {
+                    required: "Email is required",
+                    minLength: { value: 4, message: "Email must be 4 characters long" },
+                  })}
+                />
+              
+                <FormErrorMessage>
+                  {errors.email && errors.email.message}
+                </FormErrorMessage>  
+             </FormControl>
 
   <FormControl mt="4">
   <FormLabel htmlFor="password">Password</FormLabel>
@@ -97,9 +84,9 @@ function RegisterForm({setVaultKey,setStep}:{
   </FormErrorMessage>
 </FormControl>
 
-   <Button type="submit" mt="4">Register</Button>
-</FormWrapper>
-);
+         <Button type="submit" mt="4">Register</Button>
+      </FormWrapper>;
+
 }
 
 export default RegisterForm;

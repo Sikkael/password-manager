@@ -8,11 +8,7 @@ import RegisterForm from "@/components/RegisterForm";
 import LoginForm from "@/components/LoginForm";
 import Vault from "@/components/Vault";
 
-export interface VaultItem {
-  website: string;
-  username: string;
-  password: string;
-}
+
 const  Home:NextPage = () => {
 
   const [step, setStep] = useState<'login' | 'register' | 'vault'>('register');
