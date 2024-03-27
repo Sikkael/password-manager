@@ -12,7 +12,7 @@ import Vault from "@/components/Vault";
 const  Home:NextPage = () => {
 
   const [step, setStep] = useState<'login' | 'register' | 'vault'>('register');
-  const [vault, setVault] = useState<VaultItem[]>([]);
+  
   const [vaultKey, setVaultKey] = useState("");
 
   return (
@@ -24,7 +24,7 @@ const  Home:NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-         {step == 'register' && <RegisterForm setStep={setStep} setVaultKey={setVaultKey}/>}
+         {step == 'register' && <RegisterForm />}
          {step == 'login' && <LoginForm/>}
          {step == 'vault' && <Vault/>}
       </main>

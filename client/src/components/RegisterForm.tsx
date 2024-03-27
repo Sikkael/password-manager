@@ -1,7 +1,7 @@
 import { Button, FormControl, FormErrorMessage, FormLabel, Heading, Input } from "@chakra-ui/react";
 import FormWrapper from "./FormWrapper";
 import { useForm } from "react-hook-form";
-import { hashPassword } from "@/crypto";
+import { generateVaultKey, hashPassword } from "@/crypto";
 import { useMutation } from "react-query";
 import { registerUser } from "@/api";
 import { Dispatch, SetStateAction } from "react";
@@ -85,7 +85,7 @@ function RegisterForm(
 </FormControl>
 
          <Button type="submit" mt="4">Register</Button>
-      </FormWrapper>;
+  </FormWrapper>;
 
 }
 
