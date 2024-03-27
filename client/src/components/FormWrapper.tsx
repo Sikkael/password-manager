@@ -1,11 +1,13 @@
-import { BoxProps, Box } from "@chakra-ui/react";
-import { ReactNode } from "react";
+import React from "react";
+import { Box, BoxProps } from "@chakra-ui/react";
 
-function FormWrapper({children, ...props}:{children:ReactNode} & BoxProps){
-         
-    return (
+function FormWrapper({
+  children,
+  ...props
+}: { children: React.ReactNode } & BoxProps) {
+  return (
     <Box w="100%" maxW="container.sm" boxShadow="xl" p="8" as="form" {...props}>
-         {children}
+      {children}
     </Box>
   );
 }

@@ -12,6 +12,9 @@ export async function createUser(input:{
     hashedPassword:string;
     email:string;
 }){
-    return UserModel.create(input);
+    return UserModel.create({ 
+      email: input.email,
+      password: input.hashedPassword,
+    });
 }
 
