@@ -46,27 +46,28 @@ function RegisterForm(
       
               setValue("hashedPassword", hashedPassword);
 
-        mutation.mutate({
-          email,
-          hashedPassword,
-          
-        });
-       
- })}>
-       <Heading>Register</Heading>
-       <FormControl mt="4">
-          <FormLabel htmlFor="email">Email</FormLabel> 
-          <Input id="email" placeholder="Email"
-            {...register("email", {
-              required: "Email is required",
-              minLength: { value: 4, message: "Email must be 4 characters long" },
-            })}
-          />
-        
-          <FormErrorMessage>
-            {errors.email && errors.email.message}
-          </FormErrorMessage>  
-       </FormControl>
+              mutation.mutate({
+                email,
+                hashedPassword,
+                
+              });
+             
+       })}
+    >
+             <Heading>Register</Heading>
+             <FormControl mt="4">
+                <FormLabel htmlFor="email">Email</FormLabel> 
+                <Input id="email" placeholder="Email"
+                  {...register("email", {
+                    required: "Email is required",
+                    minLength: { value: 4, message: "Email must be 4 characters long" },
+                  })}
+                />
+              
+                <FormErrorMessage>
+                  {errors.email && errors.email.message}
+                </FormErrorMessage>  
+             </FormControl>
 
               <FormControl mt="4">
         <FormLabel htmlFor="password">Password</FormLabel>
