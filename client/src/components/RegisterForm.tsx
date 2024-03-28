@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { generateVaultKey, hashPassword } from "@/crypto";
 import { useMutation } from "react-query";
 import { registerUser } from "@/api";
-import { Dispatch, SetStateAction } from "react";
+
 
 function RegisterForm(
   ){
