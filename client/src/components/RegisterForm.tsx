@@ -46,11 +46,6 @@ function RegisterForm(
       
               setValue("hashedPassword", hashedPassword);
 
-              mutation.mutate({
-                email,
-                hashedPassword,
-                
-              });
              
        })}
     >
