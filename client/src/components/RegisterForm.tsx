@@ -37,7 +37,7 @@ function RegisterForm(
 
     });
 
-    return <FormWrapper
+    return (<FormWrapper
             onSubmit={handleSubmit(() => {
               const password = getValues("password");
               const email = getValues("email");
@@ -46,47 +46,51 @@ function RegisterForm(
       
               setValue("hashedPassword", hashedPassword);
 
-             
-       })}
-    >
-             <Heading>Register</Heading>
-             <FormControl mt="4">
-                <FormLabel htmlFor="email">Email</FormLabel> 
-                <Input id="email" placeholder="Email"
-                  {...register("email", {
-                    required: "Email is required",
-                    minLength: { value: 4, message: "Email must be 4 characters long" },
-                  })}
-                />
-              
-                <FormErrorMessage>
-                  {errors.email && errors.email.message}
-                </FormErrorMessage>  
-             </FormControl>
+        mutation.mutate({
+          email,
+          hashedPassword,
+          
+        });
+       
+ })}>
+       <Heading>Register</Heading>
+       <FormControl mt="4">
+          <FormLabel htmlFor="email">Email</FormLabel> 
+          <Input id="email" placeholder="Email"
+            {...register("email", {
+              required: "Email is required",
+              minLength: { value: 4, message: "Email must be 4 characters long" },
+            })}
+          />
+        
+          <FormErrorMessage>
+            {errors.email && errors.email.message}
+          </FormErrorMessage>  
+       </FormControl>
 
-  <FormControl mt="4">
-  <FormLabel htmlFor="password">Password</FormLabel>
-  <Input
-    id="password"
-    placeholder="Password"
-    type="password"
-    {...register("password", {
-      required: "Password is required",
-      minLength: {
-        value: 6,
-        message: "Password must be 6 characters long",
-      },
-    })}
- />
+              <FormControl mt="4">
+        <FormLabel htmlFor="password">Password</FormLabel>
+        <Input
+          id="password"
+          placeholder="Password"
+          type="password"
+          {...register("password", {
+            required: "Password is required",
+            minLength: {
+              value: 6,
+              message: "Password must be 6 characters long",
+            },
+          })}
+        />
 
-  <FormErrorMessage>
-    {errors.email && errors.email.message}
-  </FormErrorMessage>
-</FormControl>
+        <FormErrorMessage>
+          {errors.email && errors.email.message}
+        </FormErrorMessage>
+      </FormControl>
 
-         <Button type="submit" mt="4">Register</Button>
-  </FormWrapper>;
-
+   <Button type="submit" mt="4">Register</Button>
+</FormWrapper>
+);
 }
 
 export default RegisterForm;
