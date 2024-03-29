@@ -5,9 +5,16 @@ import { useForm } from "react-hook-form";
 import { generateVaultKey, hashPassword } from "@/crypto";
 import { useMutation } from "react-query";
 import { registerUser } from "@/api";
+import { Dispatch, SetStateAction } from "react";
 
 
-function RegisterForm(
+function RegisterForm({
+  setVaultKey,
+  setStep,
+}: {
+  setVaultKey: Dispatch<SetStateAction<string>>;
+  setStep: Dispatch<SetStateAction<"login" | "register" | "vault">>;
+}
   ){
 
   const {

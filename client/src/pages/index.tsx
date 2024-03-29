@@ -9,12 +9,17 @@ import LoginForm from "@/components/LoginForm";
 import Vault from "@/components/Vault";
 import dynamic from 'next/dynamic'
  
+export interface VaultItem {
+  website: string;
+  username: string;
+  password: string;
+}
 
 
 const  Home:NextPage = () => {
 
-  const [step, setStep] = useState<'login' | 'register' | 'vault'>('register');
-  
+  const [step, setStep] = useState<"login" | "register" | "vault">("login");
+  const [vault, setVault] = useState<VaultItem[]>([]);
   const [vaultKey, setVaultKey] = useState("");
 
   return (
