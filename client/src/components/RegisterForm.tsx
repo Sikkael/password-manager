@@ -39,11 +39,11 @@ function RegisterForm({
 
             window.sessionStorage.setItem("vk", vaultKey);
 
-      setVaultKey(vaultKey);
+            setVaultKey(vaultKey);
 
-      window.sessionStorage.setItem("vault", "");
+            window.sessionStorage.setItem("vault", "");
 
-      setStep("vault");
+            setStep("vault");
     },
     
         
