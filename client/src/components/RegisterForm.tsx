@@ -1,11 +1,20 @@
 
-import { Button, FormControl, FormErrorMessage, FormLabel, Heading, Input } from "@chakra-ui/react";
-import FormWrapper from "./FormWrapper";
-import { useForm } from "react-hook-form";
-import { generateVaultKey, hashPassword } from "@/crypto";
-import { useMutation } from "react-query";
-import { registerUser } from "@/api";
+import {
+  Button,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Heading,
+  Input,
+} from "@chakra-ui/react";
 import { Dispatch, SetStateAction } from "react";
+import { useForm } from "react-hook-form";
+import { useMutation } from "react-query";
+import { registerUser } from "../api";
+import { generateVaultKey, hashPassword } from "../crypto";
+import { VaultItem } from "../pages";
+import FormWrapper from "./FormWrapper";
+
 
 
 function RegisterForm({
