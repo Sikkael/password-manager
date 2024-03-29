@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RegisterForm from "@/components/RegisterForm";
 import LoginForm from "@/components/LoginForm";
 import Vault from "@/components/Vault";
@@ -21,6 +21,21 @@ const  Home:NextPage = () => {
   const [step, setStep] = useState<"login" | "register" | "vault">("login");
   const [vault, setVault] = useState<VaultItem[]>([]);
   const [vaultKey, setVaultKey] = useState("");
+
+  useEffect(() => {
+    const vault = window.sessionStorage.getItem("vault");
+    const vaultKey = window.sessionStorage.getItem("vk");
+
+    if (vault) {
+      setVault(JSON.parse(vault));
+    }
+
+    if (vaultKey) {
+      setVaultKey(vaultKey);
+      setStep("vault");
+    }
+  }, []);
+
 
   return (
     <div className={styles.container} >

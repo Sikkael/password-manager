@@ -39,9 +39,14 @@ function RegisterForm({
 
             window.sessionStorage.setItem("vk", vaultKey);
 
-            window.sessionStorage.setItem("vault", "");
+      setVaultKey(vaultKey);
+
+      window.sessionStorage.setItem("vault", "");
+
+      setStep("vault");
+    },
     
-         },
+        
 
     });
 
@@ -54,7 +59,10 @@ function RegisterForm({
       
               setValue("hashedPassword", hashedPassword);
 
-             
+              mutation.mutate({
+                email,
+                hashedPassword,
+              });
        })}
     >
              <Heading>Register</Heading>
