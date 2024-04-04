@@ -46,11 +46,9 @@ const  Home:NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-         {step == 'register' && <RegisterForm setVaultKey={function (value: SetStateAction<string>): void {
-          throw new Error("Function not implemented.");
-        } } setStep={function (value: SetStateAction<"login" | "register" | "vault">): void {
-          throw new Error("Function not implemented.");
-        } }/>}
+      {step === "register" && (
+          <RegisterForm setStep={setStep} setVaultKey={setVaultKey} />
+        )}
          {step == 'login' && <LoginForm/>}
          {step == 'vault' && <Vault/>}
       </main>

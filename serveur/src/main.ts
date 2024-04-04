@@ -29,7 +29,7 @@ async function main (){
     try {
         
          const url = await app.listen(4000,"0.0.0.0");
-
+         
          logger.info(`Server is ready at ${url}`);
 
          await connectToDb();
