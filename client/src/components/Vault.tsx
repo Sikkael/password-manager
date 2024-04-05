@@ -19,7 +19,14 @@ function Vault({
         name: "vault",
       });
 
-    return (<FormWrapper>
+    return (<FormWrapper
+        
+      onSubmit={handleSubmit(({ vault }) => {
+        console.log({ vault });
+
+        
+      })}
+    >
         
       {fields.map((field, index) => {
         return (
