@@ -16,7 +16,6 @@ import { VaultItem } from "../pages";
 import FormWrapper from "./FormWrapper";
 
 
-
 function RegisterForm({
   setVaultKey,
   setStep,
