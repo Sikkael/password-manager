@@ -7,6 +7,13 @@ import { CORS_ORIGIN } from "../constants";
 import jwt from "@fastify/jwt";
 import userRoutes from "../modules/user/user.route";
 import vaultRoutes from "../modules/vault/vault.route";
+import { any } from "zod";
+
+declare module "fastify" {
+  export interface FastifyInstance{
+     authenticate: any;
+  }
+}
 
 function createServer (){
 

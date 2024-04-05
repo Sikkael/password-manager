@@ -9,7 +9,7 @@ function vaultRoutes(
   app.put(
     "/",
     {
-      onRequest: [],
+      onRequest: [app.authenticate],
     },
     updateVaultHandler
   );
