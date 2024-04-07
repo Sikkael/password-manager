@@ -3,6 +3,7 @@ import { useFieldArray, useForm } from "react-hook-form";
 import FormWrapper from "./FormWrapper";
 import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { encryptVault } from "@/crypto";
+import { useMutation } from "react-query";
 
 
 function Vault({
@@ -24,6 +25,9 @@ function Vault({
         name: "vault",
       });
 
+
+      const mutation = useMutation(saveVault);
+      
     return (<FormWrapper
         
       onSubmit={handleSubmit(({ vault }) => {
