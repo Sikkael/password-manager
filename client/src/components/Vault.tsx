@@ -2,17 +2,22 @@ import { VaultItem } from "@/pages";
 import { useFieldArray, useForm } from "react-hook-form";
 import FormWrapper from "./FormWrapper";
 import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { encryptVault } from "@/crypto";
 
 
 function Vault({
-    Vault = [],
-    VaultKey =""
+    vault = [],
+    vaultKey =""
 }:{
-    Vault: VaultItem[],
-    VaultKey: string,
+    vault: VaultItem[],
+    vaultKey: string,
 }
 ){
-    const {control, register, handleSubmit} = useForm();
+    const {control, register, handleSubmit} = useForm({
+      defaultValues: {
+        vault,
+      },
+    });
 
     const { fields, append, remove } = useFieldArray({
         control,
@@ -24,7 +29,12 @@ function Vault({
       onSubmit={handleSubmit(({ vault }) => {
         console.log({ vault });
 
-        
+        const encryptedVault = encryptVault({
+          vault: JSON.stringify({ vault }),
+          vaultKey,
+        });
+
+        window.sessionStorage.setItem("vault", JSON.stringify(vault));
       })}
     >
         
