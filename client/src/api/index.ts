@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const userBase = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/user`;
-
+const vaultBase = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/vault`;
 
 export async function registerUser(payload: {
   hashedPassword: string;
@@ -15,3 +15,9 @@ export async function registerUser(payload: {
               });
        return res.data;
 }
+
+export function saveVault({ encryptedVault }: { encryptedVault: string }) {
+       return axios
+         .put(vaultBase, { encryptedVault }, { withCredentials: true })
+         .then((res) => res.data);
+     }

@@ -4,6 +4,7 @@ import FormWrapper from "./FormWrapper";
 import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { encryptVault } from "@/crypto";
 import { useMutation } from "react-query";
+import { saveVault } from "@/api";
 
 
 function Vault({
@@ -26,7 +27,7 @@ function Vault({
       });
 
 
-      const mutation = useMutation(saveVault);
+    const mutation = useMutation(saveVault);
       
     return (<FormWrapper
         
@@ -39,6 +40,11 @@ function Vault({
         });
 
         window.sessionStorage.setItem("vault", JSON.stringify(vault));
+
+        mutation.mutate({
+          encryptedVault,
+        });
+
       })}
     >
         
