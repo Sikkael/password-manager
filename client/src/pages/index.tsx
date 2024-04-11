@@ -8,6 +8,7 @@ import RegisterForm from "@/components/RegisterForm";
 import LoginForm from "@/components/LoginForm";
 import Vault from "@/components/Vault";
 import dynamic from 'next/dynamic'
+import { Button } from "@chakra-ui/react";
  
 export interface VaultItem {
   website: string;
@@ -46,6 +47,7 @@ const  Home:NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        
       {step === "register" && (
           <RegisterForm setStep={setStep} setVaultKey={setVaultKey} />
         )}
