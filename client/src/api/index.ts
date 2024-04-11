@@ -16,8 +16,17 @@ export async function registerUser(payload: {
        return res.data;
 }
 
-export function saveVault({ encryptedVault }: { encryptedVault: string }) {
-       return axios
-         .put(vaultBase, { encryptedVault }, { withCredentials: true })
-         .then((res) => res.data);
+export async function loginUser(payload: { hashedPassword: string; email: string }) {
+       const res = await axios
+              .post<{ salt: string; vault: string; }>(`${userBase}/login`, payload, {
+                     withCredentials: true,
+              });
+       return res.data;
+     }
+     
+
+export async function saveVault({ encryptedVault }: { encryptedVault: string }) {
+       const res = await axios
+              .put(vaultBase, { encryptedVault }, { withCredentials: true });
+       return res.data;
      }

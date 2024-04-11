@@ -18,7 +18,7 @@ export interface VaultItem {
 
 const  Home:NextPage = () => {
 
-  const [step, setStep] = useState<"login" | "register" | "vault">("register");
+  const [step, setStep] = useState<"login" | "register" | "vault">("login");
   const [vault, setVault] = useState<VaultItem[]>([]);
   const [vaultKey, setVaultKey] = useState("");
 
@@ -49,7 +49,13 @@ const  Home:NextPage = () => {
       {step === "register" && (
           <RegisterForm setStep={setStep} setVaultKey={setVaultKey} />
         )}
-         {step == 'login' && <LoginForm/>}
+          {step === "login" && (
+          <LoginForm
+            setVault={setVault}
+            setStep={setStep}
+            setVaultKey={setVaultKey}
+          />
+        )}
          {step === "vault" && <Vault vault={vault} vaultKey={vaultKey} />}
       </main>
     </div>
