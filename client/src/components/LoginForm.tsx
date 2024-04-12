@@ -112,6 +112,10 @@ import {
         <Button type="submit" mt="4">
            Login
         </Button>
+        <Button 
+        mt="4" onClick={() => setStep("register")}>
+           Register
+        </Button>
       </FormWrapper>
     );
   }
