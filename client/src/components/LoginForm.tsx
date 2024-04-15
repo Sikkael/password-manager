@@ -113,7 +113,7 @@ import {
            Login
         </Button>
         <Button 
-        mt="4" onClick={() => setStep("register")}>
+        mt="4" ml="2" onClick={() => setStep("register")}>
            Register
         </Button>
       </FormWrapper>

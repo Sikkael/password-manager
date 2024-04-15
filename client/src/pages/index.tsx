@@ -26,7 +26,7 @@ const  Home:NextPage = () => {
   useEffect(() => {
     const vault = window.sessionStorage.getItem("vault");
     const vaultKey = window.sessionStorage.getItem("vk");
-
+    
     if (vault) {
       setVault(JSON.parse(vault));
     }

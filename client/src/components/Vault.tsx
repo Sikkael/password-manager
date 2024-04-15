@@ -118,7 +118,10 @@ function Vault({
       <Button ml="8" color="teal" type="submit">
         Save vault
       </Button>
-      <Button ml="8" color="teal"  onClick={() => setStep("login")}>
+      <Button ml="8" color="teal"  onClick={() => {
+        setStep("login")
+        window.sessionStorage.clear();
+        }}>
         Logout
       </Button>
     </FormWrapper>
