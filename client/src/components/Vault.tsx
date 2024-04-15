@@ -5,14 +5,17 @@ import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { encryptVault } from "@/crypto";
 import { useMutation } from "react-query";
 import { saveVault } from "@/api";
+import { Dispatch, SetStateAction } from "react";
 
 
 function Vault({
     vault = [],
-    vaultKey =""
+    vaultKey ="",
+    setStep
 }:{
     vault: VaultItem[],
     vaultKey: string,
+    setStep: Dispatch<SetStateAction<"login" | "register" | "vault">>;
 }
 ){
     const {control, register, handleSubmit} = useForm({
@@ -114,6 +117,9 @@ function Vault({
 
       <Button ml="8" color="teal" type="submit">
         Save vault
+      </Button>
+      <Button ml="8" color="teal"  onClick={() => setStep("login")}>
+        Logout
       </Button>
     </FormWrapper>
   );

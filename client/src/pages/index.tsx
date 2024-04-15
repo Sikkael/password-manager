@@ -48,6 +48,10 @@ const  Home:NextPage = () => {
       </Head>
       <main className={styles.main}>
         
+            
+          
+        
+        
       {step === "register" && (
           <RegisterForm setStep={setStep} setVaultKey={setVaultKey} />
         )}
@@ -58,7 +62,9 @@ const  Home:NextPage = () => {
             setVaultKey={setVaultKey}
           />
         )}
-         {step === "vault" && <Vault vault={vault} vaultKey={vaultKey} />}
+         {step === "vault" && (
+         
+         <Vault vault={vault} vaultKey={vaultKey}  setStep={setStep}/>)}
       </main>
     </div>
   );
