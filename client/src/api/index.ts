@@ -7,8 +7,7 @@ export async function registerUser(payload: {
   hashedPassword: string;
   email: string;
 }) {
-  console.log(payload);
-  console.log(userBase);
+  
   const res = await axios
               .post<{ salt: string; vault: string; }>(userBase, payload, {
                      withCredentials: true,
