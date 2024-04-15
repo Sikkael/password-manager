@@ -35,8 +35,7 @@ function Vault({
     return (<FormWrapper
         
       onSubmit={handleSubmit(({ vault }) => {
-        console.log({ vault });
-
+        
         const encryptedVault = encryptVault({
           vault: JSON.stringify({ vault }),
           vaultKey,

@@ -50,6 +50,7 @@ function createServer (){
          async (request: FastifyRequest, reply: FastifyReply) => {
               try {
                    
+                   
                    const user = await request.jwtVerify<{
                        _id: string; 
                    }>();
