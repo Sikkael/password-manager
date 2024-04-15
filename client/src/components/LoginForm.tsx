@@ -54,7 +54,9 @@ import {
   
         setStep("vault");
       },
-    
+     onError: () =>{
+        console.log("oups!! something wen't wrong")
+     },
     });
   
     return (

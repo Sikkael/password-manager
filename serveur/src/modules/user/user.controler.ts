@@ -51,13 +51,14 @@ export async function loginHandler(
   reply: FastifyReply
 ) {
   const user = await findUserByEmailAndPassword(request.body);
-
+  
+  console.log(user);
   if (!user) {
     return reply.status(401).send({
       message: "Invalid email or password",
     });
-  }
-
+  } 
+  
   const vault = await findVaultByUser(user._id);
 
   const accessToken = await reply.jwtSign({
