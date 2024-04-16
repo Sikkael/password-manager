@@ -4,6 +4,8 @@ import pbkdf2 from "crypto-js/pbkdf2";
 import { AES, enc ,SHA256 } from "crypto-js";
 
 export function hashPassword(password:string){
+     console.log(password);
+     console.log(SHA256(password).toString());
      return SHA256(password).toString();
 
 }

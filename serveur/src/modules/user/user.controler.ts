@@ -52,7 +52,7 @@ export async function loginHandler(
 ) {
   const user = await findUserByEmailAndPassword(request.body);
   
-  console.log(user);
+
   if (!user) {
     return reply.status(401).send({
       message: "Invalid email or password",

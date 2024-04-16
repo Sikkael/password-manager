@@ -14,6 +14,7 @@ export async function createUser(input: {
   hashedPassword: string;
   email: string;
 }) {
+  
   return UserModel.create({
     email: input.email,
     password: input.hashedPassword,
@@ -36,13 +37,13 @@ export async function findUserByEmailAndPassword({
   const hash = await genHash(hashedPassword);
   
   console.log(user);
-  
-  if (!user ||!argon2.verify(user.password, hash)) {
+  console.log(hash);
+  if (!user ||!(await argon2.verify(user.password, hash)).valueOf()) {
     console.log("Salut 1");
     
     return null;
   }
-  console.log(!(await argon2.verify(user.password, hash)))
+  console.log((await argon2.verify(user.password, hash)).valueOf())
   console.log("Salut 2");
   return user;
 }
