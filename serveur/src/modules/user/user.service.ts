@@ -36,14 +36,15 @@ export async function findUserByEmailAndPassword({
   
   const hash = await genHash(hashedPassword);
   console.log(hashedPassword);
+
   console.log(user);
   console.log(hash);
-  if (!user ||!(await argon2.verify(user.password, hash)).valueOf()) {
+  if (!user ||!(await argon2.verify(user.password,hashedPassword)).valueOf()) {
     console.log("Salut 1");
     
     return null;
   }
-  console.log((await argon2.verify(user.password, hash)).valueOf())
+  console.log((await argon2.verify(user.password, hashedPassword)).valueOf())
   console.log("Salut 2");
   return user;
 }
