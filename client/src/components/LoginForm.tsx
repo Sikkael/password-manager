@@ -36,7 +36,7 @@ import {
         const hashedPassword = getValues("hashedPassword");
   
         const email = getValues("email");
-  
+        
         const vaultKey = generateVaultKey({
           hashedPassword,
           email,
