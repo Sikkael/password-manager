@@ -5,7 +5,7 @@ import { AES, enc ,SHA256 } from "crypto-js";
 
 export function hashPassword(password:string){
      
-     console.log(SHA256(password).toString());
+     
      return SHA256(password).toString();
 
 }
