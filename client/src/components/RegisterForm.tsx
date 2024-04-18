@@ -39,7 +39,7 @@ function RegisterForm({
       
             const email = getValues("email");
       
-           /* const vaultKey = generateVaultKey({
+          const vaultKey = generateVaultKey({
               hashedPassword,
               email,
               salt,
@@ -49,9 +49,9 @@ function RegisterForm({
 
             setVaultKey(vaultKey);
 
-            window.sessionStorage.setItem("vault", ""); */
+            window.sessionStorage.setItem("vault", ""); 
 
-            setStep("login");
+            setStep("vault");
     },
     
         
