@@ -39,7 +39,7 @@ function RegisterForm({
       
             const email = getValues("email");
       
-            const vaultKey = generateVaultKey({
+           /* const vaultKey = generateVaultKey({
               hashedPassword,
               email,
               salt,
@@ -49,9 +49,9 @@ function RegisterForm({
 
             setVaultKey(vaultKey);
 
-            window.sessionStorage.setItem("vault", "");
+            window.sessionStorage.setItem("vault", ""); */
 
-            setStep("vault");
+            setStep("login");
     },
     
         
@@ -109,6 +109,7 @@ function RegisterForm({
       </FormControl>
 
    <Button type="submit" mt="4">Register</Button>
+   <Button  mt="4" ml="2" onClick={()=>setStep("login")}>Cancel</Button>
 </FormWrapper>
 );
 }
