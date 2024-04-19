@@ -40,7 +40,7 @@ function Vault({
           vault: JSON.stringify({ vault }),
           vaultKey,
         });
-
+        
         window.sessionStorage.setItem("vault", JSON.stringify(vault));
 
         mutation.mutate({

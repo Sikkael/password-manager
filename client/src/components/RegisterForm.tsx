@@ -51,11 +51,9 @@ function RegisterForm({
 
             window.sessionStorage.setItem("vault", ""); 
 
-            setStep("vault");
-    },
-    
+            setStep("login");
+    },  
         
-
     });
 
     return (<FormWrapper
