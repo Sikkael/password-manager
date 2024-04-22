@@ -53,9 +53,10 @@ const  Home:NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {step === "vault" && (<h1>{email}</h1>)}
-      {step !== "vault" && (<h1>Login or register</h1>)}
-         
-
+      {step === "login" && (<h1>Login or register</h1>)}
+      {step === "register" && (<h1>Come on let's register</h1>)}
+          
+ 
       <main className={styles.main}>
        
       {step === "register" && (
