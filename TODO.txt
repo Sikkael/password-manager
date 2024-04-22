@@ -3,3 +3,6 @@ Follow "The Chromium Projects" Create Amazing Password Forms guideline
         https://www.chromium.org/developers/design-documents/create-amazing-password-forms/
 Show/hide passwords when login, regsiter and in the vault as well
 Speed up Vault page loading after login
+In the register:
+         - Password validation (length, type of character aload etc.)
+         - Password confirmation
