@@ -6,3 +6,10 @@ Speed up Vault page loading after login
 In the register:
          - Password validation (length, type of character aload etc.)
          - Password confirmation
+         - Error message
+
+In Login:
+        -Error message
+
+in Vault: 
+        -Error message
