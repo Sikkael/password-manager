@@ -18,10 +18,12 @@ import {
     setVault,
     setVaultKey,
     setStep,
+    setEmail,
   }: {
     setVault: Dispatch<SetStateAction<VaultItem[]>>;
     setVaultKey: Dispatch<SetStateAction<string>>;
     setStep: Dispatch<SetStateAction<"login" | "register" | "vault">>;
+    setEmail: Dispatch<SetStateAction<string>>;
   }) {
     const {
       handleSubmit,
@@ -49,6 +51,7 @@ import {
   
         setVaultKey(vaultKey);
         setVault(decryptedVault);
+        setEmail(email);
   
         window.sessionStorage.setItem("vault", JSON.stringify(decryptedVault));
   

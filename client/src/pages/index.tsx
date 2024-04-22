@@ -22,7 +22,7 @@ const  Home:NextPage = () => {
   const [step, setStep] = useState<"login" | "register" | "vault">("login");
   const [vault, setVault] = useState<VaultItem[]>([]);
   const [vaultKey, setVaultKey] = useState("");
-
+  const [email, setEmail] = useState("");
   useEffect(() => {
     const vault = window.sessionStorage.getItem("vault");
     const vaultKey = window.sessionStorage.getItem("vk");
@@ -46,7 +46,10 @@ const  Home:NextPage = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
+      {step === "vault" && (<h1>{email}</h1>)}
+      {step !== "vault" && (<h1>Login or register</h1>)}
+         
+
       <main className={styles.main}>
        
       {step === "register" && (
@@ -57,11 +60,12 @@ const  Home:NextPage = () => {
             setVault={setVault}
             setStep={setStep}
             setVaultKey={setVaultKey}
+            setEmail={setEmail}
           />
         )}
          {step === "vault" && (
          
-         <Vault vault={vault} vaultKey={vaultKey}  setStep={setStep}/>)}
+         <Vault vault={vault} vaultKey={vaultKey}  setStep={setStep} />)}
       </main>
     </div>
   );
