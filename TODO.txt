@@ -1,7 +1,5 @@
-Fix the non-unique id in Vault form
-Make visible the user once logged -> e.g. "Hi <name of the user>"  somewhere in the header
- logging or registering error  message  
- Follow "The Chromium Projects" Create Amazing Password Forms guideline 
+Fix the non-unique id in Vault form 
+Follow "The Chromium Projects" Create Amazing Password Forms guideline 
         https://www.chromium.org/developers/design-documents/create-amazing-password-forms/
-Show/hide passwords
+Show/hide passwords when login, regsiter and in the vault as well
 Speed up Vault page loading after login

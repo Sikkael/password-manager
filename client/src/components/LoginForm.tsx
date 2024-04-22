@@ -54,6 +54,7 @@ import {
         setEmail(email);
   
         window.sessionStorage.setItem("vault", JSON.stringify(decryptedVault));
+        window.sessionStorage.setItem("email", email);
   
         setStep("vault");
       },

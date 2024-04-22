@@ -11,11 +11,13 @@ import { Dispatch, SetStateAction } from "react";
 function Vault({
     vault = [],
     vaultKey ="",
-    setStep
+    setStep,
+    email,
 }:{
     vault: VaultItem[],
     vaultKey: string,
     setStep: Dispatch<SetStateAction<"login" | "register" | "vault">>;
+    email: string
 }
 ){
     const {control, register, handleSubmit} = useForm({

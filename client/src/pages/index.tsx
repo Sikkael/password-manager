@@ -26,7 +26,8 @@ const  Home:NextPage = () => {
   useEffect(() => {
     const vault = window.sessionStorage.getItem("vault");
     const vaultKey = window.sessionStorage.getItem("vk");
-    
+    const email = window.sessionStorage.getItem("email");
+
     if (vault) {
       setVault(JSON.parse(vault));
     }
@@ -34,6 +35,11 @@ const  Home:NextPage = () => {
     if (vaultKey) {
       setVaultKey(vaultKey);
       setStep("vault");
+      console.log("Salut");
+    }
+    if (email) {
+      setEmail(email);
+      console.log(email);
     }
   }, []);
 
@@ -65,7 +71,7 @@ const  Home:NextPage = () => {
         )}
          {step === "vault" && (
          
-         <Vault vault={vault} vaultKey={vaultKey}  setStep={setStep} />)}
+         <Vault vault={vault} vaultKey={vaultKey}  setStep={setStep} email={email}/>)}
       </main>
     </div>
   );
