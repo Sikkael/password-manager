@@ -31,15 +31,12 @@ const  Home:NextPage = () => {
     if (vault) {
       setVault(JSON.parse(vault));
     }
-
     if (vaultKey) {
       setVaultKey(vaultKey);
       setStep("vault");
-      console.log("Salut");
     }
     if (email) {
       setEmail(email);
-      console.log(email);
     }
   }, []);
 

@@ -31,14 +31,16 @@ function RegisterForm({
     getValues,
     setValue,
     formState: { errors, isSubmitting },
-  } = useForm<{ email: string; password: string; hashedPassword: string }>();
+  } = useForm<{ email: string; password: string; hashedPassword: string }>(
+    
+  );
      
     const mutation = useMutation(registerUser, {
           onSuccess: ({ salt, vault }) => {
             const hashedPassword = getValues("hashedPassword");
-      
+           
             const email = getValues("email");
-      
+           
           const vaultKey = generateVaultKey({
               hashedPassword,
               email,
@@ -53,6 +55,9 @@ function RegisterForm({
 
             setStep("login");
     },  
+    onError: () => {
+      console.log("Salut");
+    }
         
     });
 
@@ -64,25 +69,29 @@ function RegisterForm({
               const hashedPassword = hashPassword(password);
       
               setValue("hashedPassword", hashedPassword);
-
+              
               mutation.mutate({
                 email,
                 hashedPassword,
               });
-       })}
+
+              
+       })
+       
+      }
     >
              <Heading>Register</Heading>
-             <FormControl mt="4">
+             <FormControl mt="4" >
                 <FormLabel htmlFor="email">Email</FormLabel> 
-                <Input id="email" placeholder="Email"
+                <Input id="email" placeholder="Email" 
                   {...register("email", {
                     required: "Email is required",
                     minLength: { value: 4, message: "Email must be 4 characters long" },
                   })}
                 />
-              
+                
                 <FormErrorMessage>
-                  {errors.email && errors.email.message}
+                {errors.email  && errors.email.message}
                 </FormErrorMessage>  
              </FormControl>
 
@@ -102,7 +111,7 @@ function RegisterForm({
         />
 
         <FormErrorMessage>
-          {errors.email && errors.email.message}
+        {errors.email && (<span>{errors.email.message}</span>)}
         </FormErrorMessage>
       </FormControl>
 
