@@ -55,10 +55,7 @@ function RegisterForm({
 
             setStep("login");
     },  
-    onError: () => {
-      console.log("Salut");
-    }
-        
+    
     });
 
     return (<FormWrapper
