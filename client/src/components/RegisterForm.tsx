@@ -60,6 +60,7 @@ function RegisterForm({
 
     return (<FormWrapper
             onSubmit={handleSubmit(() => {
+            
               const password = getValues("password");
               const email = getValues("email");
       
@@ -80,7 +81,7 @@ function RegisterForm({
              <Heading>Register</Heading>
              <FormControl mt="4" >
                 <FormLabel htmlFor="email">Email</FormLabel> 
-                <Input id="email" placeholder="Email" 
+                <Input id="email" placeholder="Email"  isRequired 
                   {...register("email", {
                     required: "Email is required",
                     minLength: { value: 4, message: "Email must be 4 characters long" },
@@ -105,6 +106,7 @@ function RegisterForm({
               message: "Password must be 6 characters long",
             },
           })}
+          isRequired 
         />
 
         <FormErrorMessage>
