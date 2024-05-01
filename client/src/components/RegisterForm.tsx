@@ -7,7 +7,7 @@ import {
   Heading,
   Input,
 } from "@chakra-ui/react";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { registerUser } from "../api";
@@ -34,7 +34,9 @@ function RegisterForm({
   } = useForm<{ email: string; password: string; hashedPassword: string }>(
     
   );
-     
+    const [input, setInput] = useState('')
+    
+    
     const mutation = useMutation(registerUser, {
           onSuccess: ({ salt, vault }) => {
             const hashedPassword = getValues("hashedPassword");
@@ -60,7 +62,7 @@ function RegisterForm({
 
     return (<FormWrapper
             onSubmit={handleSubmit(() => {
-            
+              console.log(errors.email)
               const password = getValues("password");
               const email = getValues("email");
       
@@ -79,18 +81,18 @@ function RegisterForm({
       }
     >
              <Heading>Register</Heading>
-             <FormControl mt="4" >
+             <FormControl mt="4"  >
                 <FormLabel htmlFor="email">Email</FormLabel> 
-                <Input id="email" placeholder="Email"  isRequired 
+                <Input id="email" placeholder="Email"  
                   {...register("email", {
                     required: "Email is required",
                     minLength: { value: 4, message: "Email must be 4 characters long" },
-                  })}
-                />
-                
-                <FormErrorMessage>
-                {errors.email  && errors.email.message}
-                </FormErrorMessage>  
+                  })} 
+                  isRequired />
+                  <FormErrorMessage>
+                   {errors.email  && errors.email.message}
+                  </FormErrorMessage> 
+  
              </FormControl>
 
               <FormControl mt="4">
@@ -110,11 +112,11 @@ function RegisterForm({
         />
 
         <FormErrorMessage>
-        {errors.email && (<span>{errors.email.message}</span>)}
+        {errors.email && <span>{errors.email.message}</span>}
         </FormErrorMessage>
       </FormControl>
 
-   <Button type="submit" mt="4">Register</Button>
+   <Button type="submit"  mt="4">Register</Button>
    <Button  mt="4" ml="2" onClick={()=>setStep("login")}>Cancel</Button>
 </FormWrapper>
 );
