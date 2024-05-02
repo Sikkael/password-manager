@@ -62,7 +62,7 @@ function RegisterForm({
 
     return (<FormWrapper
             onSubmit={handleSubmit(() => {
-              console.log(errors.email)
+             
               const password = getValues("password");
               const email = getValues("email");
       
@@ -81,7 +81,7 @@ function RegisterForm({
       }
     >
              <Heading>Register</Heading>
-             <FormControl mt="4"  isInvalid={errors.email} >
+             <FormControl mt="4"  _invalid={errors.email} >
                 <FormLabel htmlFor="email">Email</FormLabel> 
                 <Input id="email" placeholder="Email"  
                   {...register("email", {
