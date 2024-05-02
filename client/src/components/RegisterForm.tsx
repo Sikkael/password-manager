@@ -88,14 +88,13 @@ function RegisterForm({
                     required: "Email is required",
                     minLength: { value: 4, message: "Email must be 4 characters long" },
                   })} 
-                  isRequired />
+                   />
                   <FormErrorMessage>
                    {errors.email  && errors.email.message}
                   </FormErrorMessage> 
-  
              </FormControl>
 
-              <FormControl mt="4">
+      <FormControl mt="4">
         <FormLabel htmlFor="password">Password</FormLabel>
         <Input
           id="password"
@@ -108,7 +107,7 @@ function RegisterForm({
               message: "Password must be 6 characters long",
             },
           })}
-          isRequired 
+        
         />
 
         <FormErrorMessage>
@@ -116,7 +115,7 @@ function RegisterForm({
         </FormErrorMessage>
       </FormControl>
 
-   <Button type="submit"  mt="4">Register</Button>
+   <Button type="submit"  mt="4" >Register</Button>
    <Button  mt="4" ml="2" onClick={()=>setStep("login")}>Cancel</Button>
 </FormWrapper>
 );
