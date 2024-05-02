@@ -81,7 +81,7 @@ function RegisterForm({
       }
     >
              <Heading>Register</Heading>
-             <FormControl mt="4"  >
+             <FormControl mt="4"  isInvalid={errors.email} >
                 <FormLabel htmlFor="email">Email</FormLabel> 
                 <Input id="email" placeholder="Email"  
                   {...register("email", {
@@ -115,7 +115,7 @@ function RegisterForm({
         </FormErrorMessage>
       </FormControl>
 
-   <Button type="submit"  mt="4" >Register</Button>
+   <Button type="submit"  mt="4" isLoading={isSubmitting}>Register</Button>
    <Button  mt="4" ml="2" onClick={()=>setStep("login")}>Cancel</Button>
 </FormWrapper>
 );
