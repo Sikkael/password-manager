@@ -30,11 +30,11 @@ function RegisterForm({
     register,
     getValues,
     setValue,
-    formState: { errors, isSubmitting,isValid },
+    formState: { errors, isSubmitting },
   } = useForm<{ email: string; password: string; hashedPassword: string }>(
     
   );
-    
+    const [input, setInput] = useState('')
     
     
     const mutation = useMutation(registerUser, {
@@ -81,7 +81,7 @@ function RegisterForm({
       }
     >
              <Heading>Register</Heading>
-             <FormControl mt="4"  isInvalid={errors.email} >
+             <FormControl mt="4"  _invalid={errors.email} >
                 <FormLabel htmlFor="email">Email</FormLabel> 
                 <Input id="email" placeholder="Email"  
                   {...register("email", {
