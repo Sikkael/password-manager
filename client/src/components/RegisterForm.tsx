@@ -80,7 +80,7 @@ function RegisterForm({
                 email,
                 hashedPassword,
               });
-              console.log(errors.email)
+             
              
               
        })
