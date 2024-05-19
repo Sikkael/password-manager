@@ -30,12 +30,18 @@ function RegisterForm({
     register,
     getValues,
     setValue,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting},
   } = useForm<{ email: string; password: string; hashedPassword: string }>(
     
   );
-    const [input, setInput] = useState('')
+   
     
+    const [input, setInput] = useState('');
+
+    const handleInputChange = (e: { target: { value: SetStateAction<string>; }; }) => setInput(e.target.value)
+
+    const isError = input === ''
+
     
     const mutation = useMutation(registerUser, {
           onSuccess: ({ salt, vault }) => {
@@ -74,20 +80,23 @@ function RegisterForm({
                 email,
                 hashedPassword,
               });
-
+              console.log(errors.email)
+             
               
        })
        
       }
     >
              <Heading>Register</Heading>
-             <FormControl mt="4"  _invalid={errors.email} >
+             <FormControl mt="4" isInvalid={isError} >
                 <FormLabel htmlFor="email">Email</FormLabel> 
-                <Input id="email" placeholder="Email"  
+                <Input id="email" placeholder="Email"  type='email'
                   {...register("email", {
                     required: "Email is required",
                     minLength: { value: 4, message: "Email must be 4 characters long" },
                   })} 
+                  value={input}
+                  onChange={handleInputChange} 
                    />
                   <FormErrorMessage>
                    {errors.email  && errors.email.message}

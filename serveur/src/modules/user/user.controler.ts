@@ -40,6 +40,7 @@ export async function registerUserHandler(
     return reply.code(201).send({ accessToken, vault: vault.data, salt });
   } catch (e) {
     logger.error(e, "error creating user");
+    
     return reply.code(500).send(e);
   }
 }
