@@ -9,7 +9,7 @@ import {
   import { Dispatch, SetStateAction, useState } from "react";
   import { useForm } from "react-hook-form";
   import { useMutation } from "react-query";
-  import { loginUser, registerUser } from "../api";
+  import { loginUser } from "../api";
   import { decryptVault, generateVaultKey, hashPassword } from "../crypto";
   import { VaultItem } from "../pages";
   import FormWrapper from "./FormWrapper";
@@ -33,12 +33,15 @@ import {
       formState: { errors, isSubmitting },
     } = useForm<{ email: string; password: string; hashedPassword: string }>();
   
-    const [input, setInput] = useState('');
+    const [emailInput, setEmailInput] = useState('');
+    const [passwordInput, setPasswordInput] = useState('');
 
-    const handleInputChange = (e: { target: { value: SetStateAction<string>; }; }) => setInput(e.target.value)
-    const handleBeforeInput = ( ) => {console.log("Salut")};
-    const isError = input === '';
 
+    const handleEmailInput = (e: { target: { value: SetStateAction<string>; }; }) => setEmailInput(e.target.value)
+    const handlePasswordInput = (e: { target: { value: SetStateAction<string>; }; }) => setPasswordInput(e.target.value)
+    const isEmailError = emailInput === '';
+    const isPasswordError = passwordInput === '';
+    
     const mutation = useMutation(loginUser, {
       onSuccess: ({ salt, vault }) => {
         const hashedPassword = getValues("hashedPassword");
@@ -64,7 +67,7 @@ import {
   
         setStep("vault");
       },
-    
+      
     });
   
     return (
@@ -76,17 +79,19 @@ import {
           const hashedPassword = hashPassword(password);
   
           setValue("hashedPassword", hashedPassword);
-  
+          console.log(isEmailError);
           mutation.mutate({
             email,
             hashedPassword,
           });
           
         })}
+
+        
       >
         <Heading>Login</Heading>
-  
-        <FormControl mt="4" isInvalid={isError}  onLoad={handleBeforeInput}>
+       
+        <FormControl mt="4" isInvalid={isEmailError}  >
           <FormLabel htmlFor="email">Email</FormLabel>
           <Input
             id="email"
@@ -95,8 +100,8 @@ import {
               required: "Email is required",
               minLength: { value: 4, message: "Email must be 4 characters long" },
             })}
-            value={input}
-            onChange={handleInputChange} 
+            value={emailInput}
+            onChange={handleEmailInput} 
            
           />
   
@@ -104,7 +109,8 @@ import {
             {errors.email && errors.email.message}
           </FormErrorMessage>
         </FormControl>
-        <FormControl mt="4">
+      
+        <FormControl mt="4" isInvalid={isPasswordError}>
           <FormLabel htmlFor="password">Password</FormLabel>
           <Input
             id="password"
@@ -117,14 +123,16 @@ import {
                 message: "Password must be 6 characters long",
               },
             })}
+            value={passwordInput}
+            onChange={handlePasswordInput}
           />
   
           <FormErrorMessage>
-            {errors.email && errors.email.message}
+            {errors.password && errors.password.message}
           </FormErrorMessage>
         </FormControl>
   
-        <Button type="submit" mt="4" isLoading={isSubmitting}>
+        <Button type="submit" mt="4" >
            Login
         </Button>
         <Button 
