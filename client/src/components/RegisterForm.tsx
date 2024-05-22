@@ -89,7 +89,7 @@ function RegisterForm({
     >
              <Heading>Register</Heading>
              <FormControl mt="4" isInvalid={isError} >
-                <FormLabel htmlFor="email">Email</FormLabel> 
+                <FormLabel  htmlFor="email">Email</FormLabel> 
                 <Input id="email" placeholder="Email"  type='email'
                   {...register("email", {
                     required: "Email is required",

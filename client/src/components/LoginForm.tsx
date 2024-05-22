@@ -6,7 +6,7 @@ import {
     Heading,
     Input,
   } from "@chakra-ui/react";
-  import { Dispatch, SetStateAction } from "react";
+  import { Dispatch, SetStateAction, useState } from "react";
   import { useForm } from "react-hook-form";
   import { useMutation } from "react-query";
   import { loginUser, registerUser } from "../api";
@@ -33,6 +33,12 @@ import {
       formState: { errors, isSubmitting },
     } = useForm<{ email: string; password: string; hashedPassword: string }>();
   
+    const [input, setInput] = useState('');
+
+    const handleInputChange = (e: { target: { value: SetStateAction<string>; }; }) => setInput(e.target.value)
+    const handleBeforeInput = ( ) => {console.log("Salut")};
+    const isError = input === '';
+
     const mutation = useMutation(loginUser, {
       onSuccess: ({ salt, vault }) => {
         const hashedPassword = getValues("hashedPassword");
@@ -75,11 +81,12 @@ import {
             email,
             hashedPassword,
           });
+          
         })}
       >
         <Heading>Login</Heading>
   
-        <FormControl mt="4">
+        <FormControl mt="4" isInvalid={isError}  onLoad={handleBeforeInput}>
           <FormLabel htmlFor="email">Email</FormLabel>
           <Input
             id="email"
@@ -88,6 +95,9 @@ import {
               required: "Email is required",
               minLength: { value: 4, message: "Email must be 4 characters long" },
             })}
+            value={input}
+            onChange={handleInputChange} 
+           
           />
   
           <FormErrorMessage>
